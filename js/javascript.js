@@ -1,7 +1,40 @@
 function drawHouse() {
 	var house = document.getElementById("myHouse");
 	var myHouse = house.getContext("2d");
+
+	var skyGrd=myHouse.createLinearGradient(600,50,0,250);
+	skyGrd.addColorStop(0,"#ec643e");
+	skyGrd.addColorStop(1,"#498497");
 	
+	// sky
+	myHouse.beginPath();
+	myHouse.moveTo(0,0);
+	myHouse.lineTo(0,300);
+	myHouse.lineTo(300,300);
+	myHouse.lineTo(300,0);
+	myHouse.closePath();
+	myHouse.fillStyle= skyGrd;
+	myHouse.fill();
+	
+	// Under house color filler
+	myHouse.beginPath();
+	myHouse.moveTo(259,241);
+	myHouse.lineTo(195,239);
+	myHouse.lineTo(152,238);
+	myHouse.lineTo(152,188);
+	myHouse.lineTo(149,187);
+	myHouse.lineTo(182,154);
+	myHouse.lineTo(229,149);
+	myHouse.lineTo(261,182);
+	myHouse.closePath();
+	myHouse.fillStyle= "rgb(15,6,0)";
+	myHouse.fill();
+
+
+	var bkgHillsGrd1=myHouse.createLinearGradient(150,230,150,275);
+	bkgHillsGrd1.addColorStop(0,"#003B00");
+	bkgHillsGrd1.addColorStop(1,"#001A00");
+
 	//Background hills
 	myHouse.beginPath();
 	myHouse.moveTo(243,262);
@@ -21,7 +54,7 @@ function drawHouse() {
 	myHouse.lineTo(0,293);
 	myHouse.lineTo(254,288);
 	myHouse.closePath();
-	myHouse.fillStyle= "red";
+	myHouse.fillStyle= bkgHillsGrd1;
 	myHouse.fill();
 	
 	//Fence post 1
@@ -36,21 +69,22 @@ function drawHouse() {
 	myHouse.lineTo(102,245);
 	myHouse.lineTo(103,253);
 	myHouse.closePath();
-	myHouse.fillStyle= "purple";
+	myHouse.fillStyle= "#442200";
 	myHouse.fill();
 	
 	//fence post 2
 	myHouse.beginPath();
-	myHouse.moveTo(70,251);
-	myHouse.lineTo(68,244);
-	myHouse.lineTo(68,238);
-	myHouse.lineTo(68,233);
-	myHouse.lineTo(66,233);
-	myHouse.lineTo(66,238);
-	myHouse.lineTo(66,245);
-	myHouse.lineTo(66,251);
+	myHouse.moveTo(58,258);
+	myHouse.lineTo(56,249);
+	myHouse.lineTo(55,242);
+	myHouse.lineTo(55,235);
+	myHouse.lineTo(55,234);
+	myHouse.lineTo(52,234);
+	myHouse.lineTo(53,238);
+	myHouse.lineTo(53,247);
+	myHouse.lineTo(54,250);
 	myHouse.closePath();
-	myHouse.fillStyle= "purple";
+	myHouse.fillStyle= "#442200";
 	myHouse.fill();
 	
 	// fence post 3
@@ -65,8 +99,386 @@ function drawHouse() {
 	myHouse.lineTo(66,251);
 	myHouse.lineTo(66,251);
 	myHouse.closePath();
-	myHouse.fillStyle= "purple";
+	myHouse.fillStyle= "#442200";
 	myHouse.fill();
+	
+	var frontHousePanelGrd1=myHouse.createLinearGradient(150,150,150,255);
+	frontHousePanelGrd1.addColorStop(0,"#904800");
+	frontHousePanelGrd1.addColorStop(0.033,"#331A00");
+	frontHousePanelGrd1.addColorStop(0.066,"#904800");
+	frontHousePanelGrd1.addColorStop(0.1,"#331A00");
+	frontHousePanelGrd1.addColorStop(0.133,"#904800");
+	frontHousePanelGrd1.addColorStop(0.166,"#331A00");
+	frontHousePanelGrd1.addColorStop(0.2,"#904800");
+	frontHousePanelGrd1.addColorStop(0.233,"#331A00");
+	frontHousePanelGrd1.addColorStop(0.266,"#904800");
+	frontHousePanelGrd1.addColorStop(0.3,"#331A00");
+	frontHousePanelGrd1.addColorStop(0.333,"#904800");
+	frontHousePanelGrd1.addColorStop(0.366,"#331A00");
+	frontHousePanelGrd1.addColorStop(0.4,"#904800");
+	frontHousePanelGrd1.addColorStop(0.433,"#331A00");
+	frontHousePanelGrd1.addColorStop(0.466,"#904800");
+	frontHousePanelGrd1.addColorStop(0.5,"#331A00");
+	frontHousePanelGrd1.addColorStop(0.533,"#904800");
+	frontHousePanelGrd1.addColorStop(0.566,"#331A00");
+	frontHousePanelGrd1.addColorStop(0.6,"#904800");
+	frontHousePanelGrd1.addColorStop(0.633,"#331A00");
+	frontHousePanelGrd1.addColorStop(0.666,"#904800");
+	frontHousePanelGrd1.addColorStop(0.7,"#331A00");
+	frontHousePanelGrd1.addColorStop(0.733,"#904800");
+	frontHousePanelGrd1.addColorStop(0.766,"#331A00");
+	frontHousePanelGrd1.addColorStop(0.8,"#904800");
+	frontHousePanelGrd1.addColorStop(0.833,"#331A00");
+	frontHousePanelGrd1.addColorStop(0.866,"#904800");
+	frontHousePanelGrd1.addColorStop(0.9,"#331A00");
+	frontHousePanelGrd1.addColorStop(0.933,"#904800");
+	frontHousePanelGrd1.addColorStop(0.966,"#331A00");
+	frontHousePanelGrd1.addColorStop(1,"#904800");
+		
+	// Front panel of house
+	myHouse.beginPath();
+	myHouse.moveTo(193,241);
+	myHouse.lineTo(261,241);
+	myHouse.lineTo(262,186);
+	myHouse.lineTo(258,187);
+	myHouse.lineTo(224,154);
+	myHouse.lineTo(193,184);
+	myHouse.closePath();
+	myHouse.fillStyle= frontHousePanelGrd1;
+	myHouse.fill();
+	
+	var leftHousePanelGrd1=myHouse.createLinearGradient(148,150,152,255);
+	leftHousePanelGrd1.addColorStop(0,"#4D2600");
+	leftHousePanelGrd1.addColorStop(0.033,"#120300");
+	leftHousePanelGrd1.addColorStop(0.066,"#4D2600");
+	leftHousePanelGrd1.addColorStop(0.1,"#120300");
+	leftHousePanelGrd1.addColorStop(0.133,"#4D2600");
+	leftHousePanelGrd1.addColorStop(0.166,"#120300");
+	leftHousePanelGrd1.addColorStop(0.2,"#4D2600");
+	leftHousePanelGrd1.addColorStop(0.233,"#120300");
+	leftHousePanelGrd1.addColorStop(0.266,"#4D2600");
+	leftHousePanelGrd1.addColorStop(0.3,"#120300");
+	leftHousePanelGrd1.addColorStop(0.333,"#4D2600");
+	leftHousePanelGrd1.addColorStop(0.366,"#120300");
+	leftHousePanelGrd1.addColorStop(0.4,"#4D2600");
+	leftHousePanelGrd1.addColorStop(0.433,"#120300");
+	leftHousePanelGrd1.addColorStop(0.466,"#4D2600");
+	leftHousePanelGrd1.addColorStop(0.5,"#120300");
+	leftHousePanelGrd1.addColorStop(0.533,"#4D2600");
+	leftHousePanelGrd1.addColorStop(0.566,"#120300");
+	leftHousePanelGrd1.addColorStop(0.6,"#4D2600");
+	leftHousePanelGrd1.addColorStop(0.633,"#120300");
+	leftHousePanelGrd1.addColorStop(0.666,"#4D2600");
+	leftHousePanelGrd1.addColorStop(0.7,"#120300");
+	leftHousePanelGrd1.addColorStop(0.733,"#4D2600");
+	leftHousePanelGrd1.addColorStop(0.766,"#120300");
+	leftHousePanelGrd1.addColorStop(0.8,"#4D2600");
+	leftHousePanelGrd1.addColorStop(0.833,"#120300");
+	leftHousePanelGrd1.addColorStop(0.866,"#4D2600");
+	leftHousePanelGrd1.addColorStop(0.9,"#120300");
+	leftHousePanelGrd1.addColorStop(0.933,"#4D2600");
+	leftHousePanelGrd1.addColorStop(0.966,"#120300");
+	leftHousePanelGrd1.addColorStop(1,"#4D2600");
+		
+	// house panel left
+	myHouse.beginPath();
+	myHouse.moveTo(193,243);
+	myHouse.lineTo(151,244);
+	myHouse.lineTo(152,242);
+	myHouse.lineTo(152,188);
+	myHouse.lineTo(188,185);
+	myHouse.lineTo(192,185);
+	myHouse.closePath();
+	myHouse.fillStyle= leftHousePanelGrd1;
+	myHouse.fill();
+		
+	// House front left corner post
+	myHouse.beginPath();
+	myHouse.moveTo(194,245);
+	myHouse.lineTo(193,183);
+	myHouse.lineTo(191,183);
+	myHouse.lineTo(191,244);
+	myHouse.closePath();
+	myHouse.fillStyle= "#1A0D00";
+	myHouse.fill();
+	
+	// front right corner post
+	myHouse.beginPath();
+	myHouse.moveTo(262,247);
+	myHouse.lineTo(262,243);
+	myHouse.lineTo(262,182);
+	myHouse.lineTo(261,182);
+	myHouse.lineTo(261,245);
+	myHouse.closePath();
+	myHouse.fillStyle= "#1A0D00";
+	myHouse.fill();
+	
+	// back corner post
+	myHouse.beginPath();
+	myHouse.moveTo(152,249);
+	myHouse.lineTo(152,242);
+	myHouse.lineTo(152,186);
+	myHouse.lineTo(151,186);
+	myHouse.lineTo(150,186);
+	myHouse.lineTo(150,246);
+	myHouse.closePath();
+	myHouse.fillStyle= "#1A0D00";
+	myHouse.fill();
+
+	
+	// chimeny right
+	myHouse.beginPath();
+	myHouse.moveTo(210,155);
+	myHouse.lineTo(210,151);
+	myHouse.lineTo(210,149);
+	myHouse.lineTo(210,141);
+	myHouse.lineTo(207,140);
+	myHouse.lineTo(206,139);
+	myHouse.lineTo(206,154);
+	myHouse.closePath();
+	myHouse.fillStyle= roofPanelGrd1;
+	myHouse.fill();
+	
+	// chimeny left
+	myHouse.beginPath();
+	myHouse.moveTo(206,160);
+	myHouse.lineTo(206,153);
+	myHouse.lineTo(206,139);
+	myHouse.lineTo(204,141);
+	myHouse.lineTo(204,154);
+	myHouse.closePath();
+	myHouse.fillStyle= "rgb(15,5,0)";
+	myHouse.fill();
+	
+	var roofPanelGrd1=myHouse.createLinearGradient(209,149,166,191);
+	roofPanelGrd1.addColorStop(0,"rgb(27,10,0)");
+	roofPanelGrd1.addColorStop(1,"rgb(18,8,0)");
+		
+	// roof panel
+	myHouse.beginPath();
+	//myHouse.moveTo(239,145);
+	myHouse.lineTo(229,148);
+	myHouse.lineTo(197,177);
+	myHouse.lineTo(192,182);
+	myHouse.lineTo(191,183);
+	myHouse.lineTo(187,184);
+	myHouse.lineTo(182,184);
+	myHouse.lineTo(169,185);
+	myHouse.lineTo(153,186);
+	myHouse.lineTo(149,186);
+	myHouse.lineTo(148,187);
+	myHouse.lineTo(146,188);
+	myHouse.lineTo(145,187);
+	myHouse.lineTo(145,186);
+	myHouse.lineTo(148,185);
+	myHouse.lineTo(182,154);
+	myHouse.lineTo(182,152);
+	myHouse.lineTo(183,152);
+	myHouse.lineTo(183,153);
+	myHouse.lineTo(227,149);
+	myHouse.closePath();
+	myHouse.fillStyle= roofPanelGrd1;
+	myHouse.fill();
+	
+	
+	
+	// right roof front face
+	myHouse.beginPath();
+	myHouse.moveTo(191,183);
+	myHouse.lineTo(148,186);
+	myHouse.lineTo(147,187);
+	myHouse.lineTo(148,188);
+	myHouse.lineTo(191,186);
+	myHouse.lineTo(193,186);
+	myHouse.lineTo(193,184);
+	myHouse.lineTo(193,183);
+	myHouse.closePath();
+	myHouse.fillStyle= "rgb(15,6,0)";
+	myHouse.fill();
+	
+	var underRoofShadowGrd1=myHouse.createLinearGradient(150,150,150,255);
+	underRoofShadowGrd1.addColorStop(0,"#4D2600");
+	underRoofShadowGrd1.addColorStop(0.033,"#120300");
+	underRoofShadowGrd1.addColorStop(0.066,"#4D2600");
+	underRoofShadowGrd1.addColorStop(0.1,"#120300");
+	underRoofShadowGrd1.addColorStop(0.133,"#4D2600");
+	underRoofShadowGrd1.addColorStop(0.166,"#120300");
+	underRoofShadowGrd1.addColorStop(0.2,"#4D2600");
+	underRoofShadowGrd1.addColorStop(0.233,"#120300");
+	underRoofShadowGrd1.addColorStop(0.266,"#4D2600");
+	underRoofShadowGrd1.addColorStop(0.3,"#120300");
+	underRoofShadowGrd1.addColorStop(0.333,"#4D2600");
+	underRoofShadowGrd1.addColorStop(0.366,"#120300");
+	underRoofShadowGrd1.addColorStop(0.4,"#4D2600");
+	underRoofShadowGrd1.addColorStop(0.433,"#120300");
+	underRoofShadowGrd1.addColorStop(0.466,"#4D2600");
+	underRoofShadowGrd1.addColorStop(0.5,"#120300");
+	underRoofShadowGrd1.addColorStop(0.533,"#4D2600");
+	underRoofShadowGrd1.addColorStop(0.566,"#120300");
+	underRoofShadowGrd1.addColorStop(0.6,"#4D2600");
+	underRoofShadowGrd1.addColorStop(0.633,"#120300");
+	underRoofShadowGrd1.addColorStop(0.666,"#4D2600");
+	underRoofShadowGrd1.addColorStop(0.7,"#120300");
+	underRoofShadowGrd1.addColorStop(0.733,"#4D2600");
+	underRoofShadowGrd1.addColorStop(0.766,"#120300");
+	underRoofShadowGrd1.addColorStop(0.8,"#4D2600");
+	underRoofShadowGrd1.addColorStop(0.833,"#120300");
+	underRoofShadowGrd1.addColorStop(0.866,"#4D2600");
+	underRoofShadowGrd1.addColorStop(0.9,"#120300");
+	underRoofShadowGrd1.addColorStop(0.933,"#4D2600");
+	underRoofShadowGrd1.addColorStop(0.966,"#120300");
+	underRoofShadowGrd1.addColorStop(1,"#4D2600");
+	
+	// roof shadow front panel
+	myHouse.beginPath();
+	myHouse.moveTo(258,188);
+	myHouse.lineTo(263,186);
+	myHouse.lineTo(228,152);
+	myHouse.lineTo(224,155);
+	myHouse.closePath();
+	myHouse.fillStyle= underRoofShadowGrd1;
+	myHouse.fill();
+	
+	// under roof right front
+	myHouse.beginPath();
+	myHouse.moveTo(266,184);
+	myHouse.lineTo(267,185);
+	myHouse.lineTo(265,186);
+	myHouse.lineTo(262,185);
+	myHouse.lineTo(259,183);
+	myHouse.lineTo(227,152);
+	myHouse.lineTo(230,150);
+	myHouse.lineTo(261,180);
+	myHouse.closePath();
+	myHouse.fillStyle= "rgb(15,6,0)";
+	myHouse.fill();
+	
+	// right roof front
+	myHouse.beginPath();
+	myHouse.moveTo(266,184);
+	myHouse.lineTo(267,186);
+	myHouse.lineTo(265,186);
+	myHouse.lineTo(264,185);
+	myHouse.lineTo(229,150);
+	myHouse.lineTo(229,147);
+	myHouse.lineTo(230,147);
+	myHouse.lineTo(231,149);
+	myHouse.lineTo(267,184);
+	myHouse.closePath();
+	myHouse.fillStyle= "rgb(20,9,0)";
+	myHouse.fill();
+	
+	// roof front left
+	myHouse.beginPath();
+	myHouse.moveTo(230,150);
+	myHouse.lineTo(191,186);
+	myHouse.lineTo(191,183);
+	myHouse.lineTo(229,147);
+	myHouse.closePath();
+	myHouse.fillStyle= "rgb(15,6,0)";
+	myHouse.fill();
+	
+	
+	// window panel 1
+	myHouse.beginPath();
+	myHouse.moveTo(215,231);
+	myHouse.lineTo(200,232);
+	myHouse.lineTo(199,210);
+	myHouse.lineTo(215,210);
+	myHouse.lineTo(215,231);
+	myHouse.closePath();
+	myHouse.fillStyle= "rgb(20,9,0)";
+	myHouse.fill();
+	
+	// window panel 2
+	myHouse.beginPath();
+	myHouse.moveTo(204,184);
+	myHouse.lineTo(215,184);
+	myHouse.lineTo(215,201);
+	myHouse.lineTo(204,201);
+	myHouse.closePath();
+	myHouse.fillStyle= "rgb(20,9,0)";
+	myHouse.fill();
+	
+	// window panel 3
+	myHouse.beginPath();
+	myHouse.moveTo(244,184);
+	myHouse.lineTo(232,184);
+	myHouse.lineTo(233,201);
+	myHouse.lineTo(244,202);
+	myHouse.closePath();
+	myHouse.fillStyle= "rgb(20,9,0)";
+	myHouse.fill();
+	
+	// window panel 4
+	myHouse.beginPath();
+	myHouse.moveTo(245,210);
+	myHouse.lineTo(233,210);
+	myHouse.lineTo(234,232);
+	myHouse.lineTo(245,233);
+	myHouse.closePath();
+	myHouse.fillStyle= "rgb(20,9,0)";
+	myHouse.fill();
+	
+	var houseLightingGrd1=myHouse.createLinearGradient(200,153,252,226);
+	houseLightingGrd1.addColorStop(0,"#B8B800");
+	houseLightingGrd1.addColorStop(1,"#909000");
+	
+	// window 1
+	myHouse.beginPath();
+	myHouse.moveTo(202,213);
+	myHouse.lineTo(202,229);
+	myHouse.lineTo(212,229);
+	myHouse.lineTo(212,213);
+	myHouse.closePath();
+	myHouse.fillStyle= houseLightingGrd1;
+	myHouse.fill();
+	
+	// window 2
+	myHouse.beginPath();
+	myHouse.moveTo(213,199);
+	myHouse.lineTo(206,199);
+	myHouse.lineTo(206,186);
+	myHouse.lineTo(213,186);
+	myHouse.closePath();
+	myHouse.fillStyle= houseLightingGrd1;
+	myHouse.fill();
+	
+	// window 3
+	myHouse.beginPath();
+	myHouse.moveTo(235,186);
+	myHouse.lineTo(235,200);
+	myHouse.lineTo(242,200);
+	myHouse.lineTo(242,186);
+	myHouse.closePath();
+	myHouse.fillStyle= houseLightingGrd1;
+	myHouse.fill();
+	
+	// window 4
+	myHouse.beginPath();
+	myHouse.moveTo(242,230);
+	myHouse.lineTo(236,230);
+	myHouse.lineTo(236,213);
+	myHouse.lineTo(242,213);
+	myHouse.closePath();
+	myHouse.fillStyle= houseLightingGrd1;
+	myHouse.fill();
+	
+	// door hole
+	myHouse.beginPath();
+	myHouse.moveTo(229,238);
+	myHouse.lineTo(219,238);
+	myHouse.lineTo(220,213);
+	myHouse.lineTo(229,213);
+	myHouse.closePath();
+	myHouse.fillStyle= "rgb(40,25,0)";
+	myHouse.fill();
+	
+	
+	var groundGrd1=myHouse.createLinearGradient(150,250,150,300);
+	groundGrd1.addColorStop(0,"#005500");
+	groundGrd1.addColorStop(1,"#002A00");
+
 	//Ground under house
 	myHouse.beginPath();
 	myHouse.moveTo(300,241);
@@ -85,7 +497,28 @@ function drawHouse() {
 	myHouse.lineTo(0,300);
 	myHouse.lineTo(300,300);
 	myHouse.closePath();
-	myHouse.fillStyle = "green";
+	myHouse.fillStyle = groundGrd1;
 	myHouse.fill();
+	
+	
+	
+
+	
+	//function drawSmokeParticle() {
+		var startx = 200
+		var starty = 50
+		var startRadius = 50
+		//var smokeGrd = myHouse.createRadialGradient((startx+startRadius),(starty+startRadius),0,startx,starty,startRadius);
+		var smokeGrd = myHouse.createRadialGradient(250,100,5,200,50,50);
+		smokeGrd.addColorStop(0,"white");
+		smokeGrd.addColorStop(1,"green");
+		//Smoke particle
+		myHouse.beginPath();
+		myHouse.arc(startx, starty, startRadius, 0, Math.PI*2, true); 
+		myHouse.closePath();
+		myHouse.fillStyle = "smokeGrd";
+		myHouse.fill();
+	//}
+	//myHouse.drawSmokeParticle();
 	
 }
