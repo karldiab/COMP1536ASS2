@@ -500,24 +500,53 @@ function drawHouse() {
 	myHouse.fillStyle = groundGrd1;
 	myHouse.fill();
 	
-
-		function smokeParticle()  {
+	/*function drawSmoke() {
 		var x = 208
 		var y = 150
-		if (y < -100) {
-			var startRadius = 5
-			var smokeGrd = myHouse.createRadialGradient(x,y,0,x,y,startRadius);
-			smokeGrd.addColorStop(0,"white");
-			smokeGrd.addColorStop(0.4,"rgba(255,255,255,0.4)");
-			smokeGrd.addColorStop(1,"rgba(255,255,255,0)");
-			//Smoke particle
-			myHouse.beginPath();
-			myHouse.arc(x, y, startRadius, 0, Math.PI*2, true); 
-			myHouse.closePath();
-			myHouse.fillStyle = smokeGrd;
-			myHouse.fill();
+		var radius = 5	
+		var smokeGrd = myHouse.createRadialGradient(x,y,0,x,y,radius);
+		smokeGrd.addColorStop(0,"white");
+		smokeGrd.addColorStop(0.4,"rgba(255,255,255,0.4)");
+		smokeGrd.addColorStop(1,"rgba(255,255,255,0)");
+		//Smoke particle
+		myHouse.beginPath();
+		myHouse.arc(x, y, radius, 0, Math.PI*2, true); 
+		myHouse.closePath();
+		myHouse.fillStyle = smokeGrd;
+		myHouse.fill();
+	}*/
+
+		function smokeParticle()  {
+			var windFactor = Math.random() - 0.5;
+			var x = 207
+			var y = 138
+			var radius = 3
+			var fade = 1;
+			var prt = setInterval(function () {
+				if (y > -100) {
+					myHouse.fillStyle = skyGrd;
+					if (y < 136) {
+						myHouse.fillRect(x-radius,y-radius,2*radius,2*radius);
+					};
+					var smokeGrd = myHouse.createRadialGradient(x,y,0,x,y,radius);
+					smokeGrd.addColorStop(0,"rgba(255,255,255,1)");
+					smokeGrd.addColorStop(0.4,"rgba(255,255,255,0.4)");
+					smokeGrd.addColorStop(1,"rgba(255,255,255,0)");
+					//Smoke particle
+					myHouse.beginPath();
+					myHouse.arc(x, y, radius, 0, Math.PI*2, true); 
+					myHouse.closePath();
+					myHouse.fillStyle = smokeGrd;
+					myHouse.fill();
+					radius += .1;
+					x += (Math.random())*windFactor;
+					y -= 1;
+				} else {
+					clearInterval(prt);
+				}
+			}, 50);
 		}
-	
+	setInterval(smokeParticle, Math.random() * 1500);
 	/*function smokeParticle(x,y)  {
 		if (y < 50) {
 		var startx = x
@@ -535,16 +564,5 @@ function drawHouse() {
 		myHouse.fill();
 		}
 		*/
-	};
-		function moveSmoke() {
-    	var x = 300;
-		var y = 300;
-    	setInterval(function () {
-            smokeParticle(x,y)
-			x -= 10;
-			y -= 10;
-    	}, 200);
-}
-
-	
-}
+		//smokeParticle(-1);
+	}
