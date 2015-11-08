@@ -500,25 +500,51 @@ function drawHouse() {
 	myHouse.fillStyle = groundGrd1;
 	myHouse.fill();
 	
-	
-	
 
+		function smokeParticle()  {
+		var x = 208
+		var y = 150
+		if (y < -100) {
+			var startRadius = 5
+			var smokeGrd = myHouse.createRadialGradient(x,y,0,x,y,startRadius);
+			smokeGrd.addColorStop(0,"white");
+			smokeGrd.addColorStop(0.4,"rgba(255,255,255,0.4)");
+			smokeGrd.addColorStop(1,"rgba(255,255,255,0)");
+			//Smoke particle
+			myHouse.beginPath();
+			myHouse.arc(x, y, startRadius, 0, Math.PI*2, true); 
+			myHouse.closePath();
+			myHouse.fillStyle = smokeGrd;
+			myHouse.fill();
+		}
 	
-	//function drawSmokeParticle() {
-		var startx = 200
-		var starty = 50
+	/*function smokeParticle(x,y)  {
+		if (y < 50) {
+		var startx = x
+		var starty = y
 		var startRadius = 50
-		//var smokeGrd = myHouse.createRadialGradient((startx+startRadius),(starty+startRadius),0,startx,starty,startRadius);
-		var smokeGrd = myHouse.createRadialGradient(250,100,5,200,50,50);
+		var smokeGrd = myHouse.createRadialGradient(startx,starty,0,startx,starty,startRadius);
 		smokeGrd.addColorStop(0,"white");
-		smokeGrd.addColorStop(1,"green");
+		smokeGrd.addColorStop(0.4,"rgba(255,255,255,0.4)");
+		smokeGrd.addColorStop(1,"rgba(255,255,255,0)");
 		//Smoke particle
 		myHouse.beginPath();
 		myHouse.arc(startx, starty, startRadius, 0, Math.PI*2, true); 
 		myHouse.closePath();
-		myHouse.fillStyle = "smokeGrd";
+		myHouse.fillStyle = smokeGrd;
 		myHouse.fill();
-	//}
-	//myHouse.drawSmokeParticle();
+		}
+		*/
+	};
+		function moveSmoke() {
+    	var x = 300;
+		var y = 300;
+    	setInterval(function () {
+            smokeParticle(x,y)
+			x -= 10;
+			y -= 10;
+    	}, 200);
+}
+
 	
 }
