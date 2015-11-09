@@ -1,3 +1,40 @@
 body {
 	text-align: center;
 }
+
+#mySky {
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 0;
+}
+#myHouse {
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 10;
+}
+#mySmoke1 {
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 1;
+}
+#mySmoke2 {
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 2;
+}
+#mySmoke3 {
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 3;
+}
+#mySmoke4 {
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 4;
+}

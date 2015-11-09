@@ -1,20 +1,27 @@
-function drawHouse() {
-	var house = document.getElementById("myHouse");
-	var myHouse = house.getContext("2d");
-
-	var skyGrd=myHouse.createLinearGradient(600,50,0,250);
+// Function to draw sky as backdrop
+function drawSky() {
+	var sky = document.getElementById("mySky");
+	var mySky = sky.getContext("2d");
+	
+	var skyGrd=mySky.createLinearGradient(600,50,0,250);
 	skyGrd.addColorStop(0,"#ec643e");
 	skyGrd.addColorStop(1,"#498497");
 	
 	// sky
-	myHouse.beginPath();
-	myHouse.moveTo(0,0);
-	myHouse.lineTo(0,300);
-	myHouse.lineTo(300,300);
-	myHouse.lineTo(300,0);
-	myHouse.closePath();
-	myHouse.fillStyle= skyGrd;
-	myHouse.fill();
+	mySky.beginPath();
+	mySky.moveTo(0,0);
+	mySky.lineTo(0,300);
+	mySky.lineTo(300,300);
+	mySky.lineTo(300,0);
+	mySky.closePath();
+	mySky.fillStyle= skyGrd;
+	mySky.fill();
+}
+
+// Draws house and landscape as topmost layer
+function drawHouse() {
+	var house = document.getElementById("myHouse");
+	var myHouse = house.getContext("2d");
 	
 	// Under house color filler
 	myHouse.beginPath();
@@ -515,38 +522,6 @@ function drawHouse() {
 		myHouse.fillStyle = smokeGrd;
 		myHouse.fill();
 	}*/
-
-		function smokeParticle()  {
-			var windFactor = Math.random() - 0.5;
-			var x = 207
-			var y = 138
-			var radius = 3
-			var fade = 1;
-			var prt = setInterval(function () {
-				if (y > -100) {
-					myHouse.fillStyle = skyGrd;
-					if (y < 136) {
-						myHouse.fillRect(x-radius,y-radius,2*radius,2*radius);
-					};
-					var smokeGrd = myHouse.createRadialGradient(x,y,0,x,y,radius);
-					smokeGrd.addColorStop(0,"rgba(255,255,255,1)");
-					smokeGrd.addColorStop(0.4,"rgba(255,255,255,0.4)");
-					smokeGrd.addColorStop(1,"rgba(255,255,255,0)");
-					//Smoke particle
-					myHouse.beginPath();
-					myHouse.arc(x, y, radius, 0, Math.PI*2, true); 
-					myHouse.closePath();
-					myHouse.fillStyle = smokeGrd;
-					myHouse.fill();
-					radius += .1;
-					x += (Math.random())*windFactor;
-					y -= 1;
-				} else {
-					clearInterval(prt);
-				}
-			}, 50);
-		}
-	setInterval(smokeParticle, Math.random() * 1500);
 	/*function smokeParticle(x,y)  {
 		if (y < 50) {
 		var startx = x
@@ -566,3 +541,127 @@ function drawHouse() {
 		*/
 		//smokeParticle(-1);
 	}
+function drawSmoke1() {
+	var smoke = document.getElementById("mySmoke1");
+	var mySmoke = smoke.getContext("2d");
+	function smokeParticle1()  {
+		var windFactor = Math.random() - 0.5;
+		var x = 207
+		var y = 138
+		var radius = 3
+		var prt = setInterval(function () {
+			if (y > -100) {
+				mySmoke.clearRect(x-radius,y-radius,2.5*radius,2.5*radius);
+				var smokeGrd = mySmoke.createRadialGradient(x,y,0,x,y,radius);
+				smokeGrd.addColorStop(0,"rgba(255,255,255,1)");
+				smokeGrd.addColorStop(0.4,"rgba(255,255,255,0.4)");
+				smokeGrd.addColorStop(1,"rgba(255,255,255,0)");
+				//Smoke particle
+				mySmoke.beginPath();
+				mySmoke.arc(x, y, radius, 0, Math.PI*2, true); 
+				mySmoke.closePath();
+				mySmoke.fillStyle = smokeGrd;
+				mySmoke.fill();
+				radius += .1;
+				x += (Math.random())*windFactor;
+				y -= 1;
+			} else {
+				clearInterval(prt);
+			}
+		}, 50);
+	}
+	setInterval(smokeParticle1, (Math.random() * 7000));
+}
+function drawSmoke2() {
+	var smoke = document.getElementById("mySmoke2");
+	var mySmoke = smoke.getContext("2d");
+	function smokeParticle2()  {
+		var windFactor = Math.random() - 0.5;
+		var x = 207
+		var y = 138
+		var radius = 3
+		var prt = setInterval(function () {
+			if (y > -100) {
+				mySmoke.clearRect(x-radius,y-radius,2.5*radius,2.5*radius);
+				var smokeGrd = mySmoke.createRadialGradient(x,y,0,x,y,radius);
+				smokeGrd.addColorStop(0,"rgba(0,255,255,1)");
+				smokeGrd.addColorStop(0.4,"rgba(255,255,255,0.4)");
+				smokeGrd.addColorStop(1,"rgba(255,255,255,0)");
+				//Smoke particle
+				mySmoke.beginPath();
+				mySmoke.arc(x, y, radius, 0, Math.PI*2, true); 
+				mySmoke.closePath();
+				mySmoke.fillStyle = smokeGrd;
+				mySmoke.fill();
+				radius += .1;
+				x += (Math.random())*windFactor;
+				y -= 1;
+			} else {
+				clearInterval(prt);
+			}
+		}, 50);
+	}
+	setInterval(smokeParticle2, (Math.random() * 7000));
+}
+function drawSmoke3() {
+	var smoke = document.getElementById("mySmoke3");
+	var mySmoke = smoke.getContext("2d");
+	function smokeParticle3()  {
+		var windFactor = Math.random() - 0.5;
+		var x = 207
+		var y = 138
+		var radius = 3
+		var prt = setInterval(function () {
+			if (y > -100) {
+				mySmoke.clearRect(x-radius,y-radius,2.5*radius,2.5*radius);
+				var smokeGrd = mySmoke.createRadialGradient(x,y,0,x,y,radius);
+				smokeGrd.addColorStop(0,"rgba(255,0,255,1)");
+				smokeGrd.addColorStop(0.4,"rgba(255,255,255,0.4)");
+				smokeGrd.addColorStop(1,"rgba(255,255,255,0)");
+				//Smoke particle
+				mySmoke.beginPath();
+				mySmoke.arc(x, y, radius, 0, Math.PI*2, true); 
+				mySmoke.closePath();
+				mySmoke.fillStyle = smokeGrd;
+				mySmoke.fill();
+				radius += .1;
+				x += (Math.random())*windFactor;
+				y -= 1;
+			} else {
+				clearInterval(prt);
+			}
+		}, 50);
+	}
+	setInterval(smokeParticle3, (Math.random() * 7000));
+}
+function drawSmoke4() {
+	var smoke = document.getElementById("mySmoke4");
+	var mySmoke = smoke.getContext("2d");
+	function smokeParticle4()  {
+		var windFactor = Math.random() - 0.5;
+		var x = 207
+		var y = 138
+		var radius = 3
+		var prt = setInterval(function () {
+			if (y > -100) {
+				mySmoke.clearRect(x-radius,y-radius,2.5*radius,2.5*radius);
+				var smokeGrd = mySmoke.createRadialGradient(x,y,0,x,y,radius);
+				smokeGrd.addColorStop(0,"rgba(255,255,0,1)");
+				smokeGrd.addColorStop(0.4,"rgba(255,255,255,0.4)");
+				smokeGrd.addColorStop(1,"rgba(255,255,255,0)");
+				//Smoke particle
+				mySmoke.beginPath();
+				mySmoke.arc(x, y, radius, 0, Math.PI*2, true); 
+				mySmoke.closePath();
+				mySmoke.fillStyle = smokeGrd;
+				mySmoke.fill();
+				radius += .1;
+				x += (Math.random())*windFactor;
+				y -= 1;
+			} else {
+				clearInterval(prt);
+			}
+		}, 50);
+	}
+	setInterval(smokeParticle4, (Math.random() * 7000));
+}
