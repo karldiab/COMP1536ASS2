@@ -38,3 +38,15 @@ body {
 	top: 0;
 	z-index: 4;
 }
+#mySmoke5 {
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 5;
+}
+#mySmoke6 {
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 6;
+}

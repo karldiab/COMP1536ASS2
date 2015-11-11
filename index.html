@@ -9,19 +9,25 @@
 		<script src="js/javascript.js"></script>
 	</head>
 	
-	<body onLoad="drawHouse(), drawSky(), drawSmoke4(), drawSmoke1(), drawSmoke2(), drawSmoke3()">
+	<body onLoad="drawHouse(), drawSky(), drawSmoke4(), drawSmoke1(), drawSmoke2(), drawSmoke3(), drawSmoke5(), drawSmoke6(), windGenerator()">
 		<div class="container">
 			<div class="col-xs-12">
 				<h1>Behold my glorious house!</h1>
 			</div>
-			<div class="col-xs-12" style="position: relative;">
-				
+			<div class="col-xs-12">
 				<canvas id="myHouse" width="300" height="300"></canvas>
 				<canvas id="mySky" width="300" height="300"></canvas>
 				<canvas id="mySmoke1" width="300" height="300"></canvas>
 				<canvas id="mySmoke2" width="300" height="300"></canvas>
 				<canvas id="mySmoke3" width="300" height="300"></canvas>
 				<canvas id="mySmoke4" width="300" height="300"></canvas>
+				<canvas id="mySmoke5" width="300" height="300"></canvas>
+				<canvas id="mySmoke6" width="300" height="300"></canvas>
+			</div>
+			<br />
+			<div class="col-xs-12">
+				<h3>Wind factor:    </h3>
+				<h3 id="theWind"></h3>
 			</div>
 		</div>
 	</body>
