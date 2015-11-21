@@ -1,4 +1,4 @@
-/* driver function to initiate all nessesary functions. */
+/* driver function to initiate all necessary functions. */
 function runAll() {
 	drawSky();
 	drawHouse();
@@ -9,6 +9,13 @@ function runAll() {
 	drawSmoke5();
 	drawSmoke6();
 	drawSmoke7();
+	drawSmoke8();
+	drawSmoke9();
+	drawSmoke10();
+	drawSmoke11();
+	drawSmoke12();
+	drawSmoke13();
+	drawSmoke14();
 	windGenerator();
 	
 }
@@ -40,15 +47,7 @@ function drawHouse() {
 	var x = 100;
 	var y = 100;
 	var radius = 20;
-	
-	myHouse.beginPath();
-				myHouse.arc(x, y, radius, 0, Math.PI*2, true); 
-				myHouse.closePath();
-				myHouse.fillStyle = "red";
-				myHouse.fill();
-				
-	myHouse.clearRect(x-radius,y-radius,2*radius,2*radius);
-	// Under house color filler
+	// Under house filler
 	myHouse.beginPath();
 	myHouse.moveTo(259,241);
 	myHouse.lineTo(195,239);
@@ -453,9 +452,19 @@ function drawHouse() {
 	myHouse.fillStyle= "rgb(20,9,0)";
 	myHouse.fill();
 	
-	var houseLightingGrd1=myHouse.createLinearGradient(200,153,252,226);
-	houseLightingGrd1.addColorStop(0,"#B8B800");
-	houseLightingGrd1.addColorStop(1,"#909000");
+	/*Function to change the brightness of the house lighting when
+	the smoke slider is changed which alters the global variable
+	smokeAmount*/
+	function changeHouseLighting() {
+	var alphaValue = (smokeAmount/14);
+	var colorString1 = "rgba(229,230,0," + alphaValue + ")";
+	var colorString2 = "rgba(255,153,0," + alphaValue + ")";
+	var houseLightingGrd1=myHouse.createLinearGradient(200,153,272,226);
+	houseLightingGrd1.addColorStop(0,colorString2);
+	houseLightingGrd1.addColorStop(1,colorString1);
+	return houseLightingGrd1;
+	}
+
 	
 	// window 1
 	myHouse.beginPath();
@@ -464,7 +473,7 @@ function drawHouse() {
 	myHouse.lineTo(212,229);
 	myHouse.lineTo(212,213);
 	myHouse.closePath();
-	myHouse.fillStyle= houseLightingGrd1;
+	myHouse.fillStyle= changeHouseLighting();
 	myHouse.fill();
 	
 	// window 2
@@ -474,7 +483,7 @@ function drawHouse() {
 	myHouse.lineTo(206,186);
 	myHouse.lineTo(213,186);
 	myHouse.closePath();
-	myHouse.fillStyle= houseLightingGrd1;
+	myHouse.fillStyle= changeHouseLighting();
 	myHouse.fill();
 	
 	// window 3
@@ -484,7 +493,7 @@ function drawHouse() {
 	myHouse.lineTo(242,200);
 	myHouse.lineTo(242,186);
 	myHouse.closePath();
-	myHouse.fillStyle= houseLightingGrd1;
+	myHouse.fillStyle= changeHouseLighting();
 	myHouse.fill();
 	
 	// window 4
@@ -494,7 +503,7 @@ function drawHouse() {
 	myHouse.lineTo(236,213);
 	myHouse.lineTo(242,213);
 	myHouse.closePath();
-	myHouse.fillStyle= houseLightingGrd1;
+	myHouse.fillStyle= changeHouseLighting();
 	myHouse.fill();
 	
 	// door hole
@@ -535,16 +544,23 @@ function drawHouse() {
 	}
 	
 // Randomly generated wind factor global variable
-var windFactor = ((Math.random()*3)-2);
+var windFactor = ((Math.random()*1.5)-1);
+var smokeAmount = 14;
 //Function to periodically change the wind factor and display the value on the page.
 function windGenerator() {
-document.getElementById("theWind").innerHTML = "" + windFactor;
-setInterval(function() { windFactor = ((Math.random()*3)-2);
-document.getElementById("theWind").innerHTML = "" + windFactor;}, 5000);
+document.getElementById("theWind").innerHTML = "" + Number(windFactor*10).toFixed(2);
+setInterval(function() { windFactor = ((Math.random()*1.5)-1);
+document.getElementById("theWind").innerHTML = "" + Number(windFactor*10).toFixed(2);
+}, 5000);
+}
+/*function that changes global variable smokeAmount when slider is moved by user*/
+function setSmokeAmount(sliderValue) {
+	smokeAmount = sliderValue;
+	document.getElementById("smokeAmount").innerHTML = "" + smokeAmount;
 }
 // Global variable for smoke color, default is white
 var smokeColor = "white";
-// function to toggle smokeColor var
+// function to toggle smokeColor var when user pushes button
 function toggleSmoke() {
 	switch (smokeColor) {
 		case "white":
@@ -574,6 +590,10 @@ function smokeGradientMaker(smokeInstanceID) {
 			gradientBuilder = "rgba(0,0,0,";
 			break;
 		case "rainbow":
+				//Makes it so there are only 7 possible values for subswitch below.
+				if (smokeInstanceID > 7) {
+				smokeInstanceID -= 7;
+				}
 			/*subswitch to change smoke color to 1 of the 7 rainbow colors depending
 			on which drawSmokex() called this function. */
 			switch (smokeInstanceID) {
@@ -599,12 +619,12 @@ function smokeGradientMaker(smokeInstanceID) {
 					gradientBuilder = "rgba(238,130,238,";
 					break;
 				default:
-					gradientBuilder = "rgba(75,0,130,";
+					gradientBuilder = "rgba(0,0,0,";
 					break;
 			}
 			break;
 		default:
-			gradientBuilder = "rgba(0,0,255,";
+			gradientBuilder = "rgba(255,255,255,";
 			break;
 	}
 	return gradientBuilder;
@@ -618,24 +638,24 @@ canvasVar
 Used to tell the function which canvas to draw to.
  */
 function drawSmoke(smokeInstanceID, canvasVar) {
-	function smokeParticle() {
+	function newSmokeParticle() {
 		// random wandering factor for x motion of smoke particle
-		var randomFactor = (Math.random()*0.5) - 0.25;
+		var randomFactor = ((Math.random()*0.5) - 0.25)*0.75;
 		var x = 207;
 		var y = 138;
 		var radius = 3;
 		var gradient1 = 1;
 		var gradient2 = 0.4;
-		var yDecrementFactor = 1;
+		var yDecrementFactor = 0.5;
 		var gradientBuilder = "rgba(255,255,255,";
 		var prt = setInterval(function () {
 			if (y > -25) {
 				/*Calls smokeGradientMaker function to set the gradientBuilder String for appropriate
-				smoke color*/
+				smoke colour*/
 				gradientBuilder = smokeGradientMaker(smokeInstanceID);
 				//clears old smoke particle
 				canvasVar.clearRect(x-radius,y-radius,2*radius,2*radius);
-				/* causes each smoke particle to wander in x dirrection based on randomFactor
+				/* causes each smoke particle to wander in x direction based on randomFactor
 				and the current windFactor*/
 				x += ((randomFactor) + windFactor);
 				y -= yDecrementFactor;
@@ -644,9 +664,9 @@ function drawSmoke(smokeInstanceID, canvasVar) {
 				var gradient = gradientBuilder + gradient1 + ")"
 				smokeGrd.addColorStop(0,gradient);
 				smokeGrd.addColorStop(0.5,gradient);
-				gradient1 -= 0.008;
+				gradient1 -= 0.004;
 				gradient = gradientBuilder + gradient2 + ")"
-				gradient2 -= 0.008;
+				gradient2 -= 0.004;
 				smokeGrd.addColorStop(0.8, gradient);
 				gradient = gradientBuilder + "0)"
 				smokeGrd.addColorStop(1, gradient);
@@ -657,17 +677,23 @@ function drawSmoke(smokeInstanceID, canvasVar) {
 				canvasVar.fillStyle = smokeGrd;
 				canvasVar.fill();
 				//causes size of smoke particle to grow with time
-				radius += .12;
+				radius += .06;
 			// stops the smoke after y = -25 and clears out-of-frame smoke to save cpu work;
 			} else {
 				canvasVar.clearRect(x-radius-windFactor,y-radius,3*radius,2.3*radius);
 				clearInterval(prt);
 			}
-		}, 50); }
-	// Creates a new smoke particle at a random time interval on average every ~2.8s
-	setInterval(smokeParticle, ((Math.random()) * 200)+1350+(smokeInstanceID*200));
+		}, 25); }
+	// Creates a new smoke particle at a random interval only if smokeAmount variable is large enough
+	setInterval(function() {
+		if (smokeInstanceID <= smokeAmount) {
+		newSmokeParticle();
+		}
 	}
-
+	, 1450+(Math.sqrt(smokeInstanceID)*300));
+	}
+/*drawSmokex functions that attached a variable to a canvas and run the drawSmoke
+function*/
 function drawSmoke1() {
 	var smoke = document.getElementById("mySmoke1");
 	var mySmoke = smoke.getContext("2d");
@@ -702,4 +728,39 @@ function drawSmoke7() {
 	var smoke = document.getElementById("mySmoke7");
 	var mySmoke = smoke.getContext("2d");
 	drawSmoke(7, mySmoke);
+}
+function drawSmoke8() {
+	var smoke = document.getElementById("mySmoke8");
+	var mySmoke = smoke.getContext("2d");
+	drawSmoke(8, mySmoke);
+}
+function drawSmoke9() {
+	var smoke = document.getElementById("mySmoke9");
+	var mySmoke = smoke.getContext("2d");
+	drawSmoke(9, mySmoke);
+}
+function drawSmoke10() {
+	var smoke = document.getElementById("mySmoke10");
+	var mySmoke = smoke.getContext("2d");
+	drawSmoke(10, mySmoke);
+}
+function drawSmoke11() {
+	var smoke = document.getElementById("mySmoke11");
+	var mySmoke = smoke.getContext("2d");
+	drawSmoke(11, mySmoke);
+}
+function drawSmoke12() {
+	var smoke = document.getElementById("mySmoke12");
+	var mySmoke = smoke.getContext("2d");
+	drawSmoke(12, mySmoke);
+}
+function drawSmoke13() {
+	var smoke = document.getElementById("mySmoke13");
+	var mySmoke = smoke.getContext("2d");
+	drawSmoke(13, mySmoke);
+}
+function drawSmoke14() {
+	var smoke = document.getElementById("mySmoke14");
+	var mySmoke = smoke.getContext("2d");
+	drawSmoke(14, mySmoke);
 }
